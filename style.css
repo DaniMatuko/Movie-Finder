@@ -1,0 +1,72 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: radial-gradient( #6d1414, #201e1e);
+}
+
+.container {
+    font-family: 'Solway', serif;
+}
+
+form {
+    margin: 15px auto;
+    width: 80%;
+}
+
+input {
+    margin: 1px;
+}
+
+#searchValue {
+    width: 80%;
+}
+
+#searchBtn {
+    width: 35%;
+}
+
+.jumbotron {
+    margin: 30px auto;
+    background: radial-gradient( #bbacdd, #fffaec41);
+}
+
+.movie span {
+    display: block;
+    color: whitesmoke;
+}
+
+.movie {
+    background: #0c0b0b57;
+    padding: 10px;
+    height: 360px;
+}
+
+.movie img {
+    height: 240px;
+}
+
+@media only screen and (max-width: 768px) {
+    .jumbotron {
+        background-color: lightblue;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    form {
+        width: 100%;
+    }
+    #searchValue {
+        width: 90%;
+    }
+    #searchBtn {
+        width: 45%;
+        margin: 4px;
+    }
+}
