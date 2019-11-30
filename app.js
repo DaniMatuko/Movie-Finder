@@ -2,13 +2,22 @@
 const searchValue = $('#searchValue');
 const searchBtn = $('#searchBtn');
 
-// Add event listener
+// Event listeners
 
 searchBtn.click(function(e) {
+    showMovies();
+    e.preventDefault();
+})
+
+
+
+function showMovies() {
+    // Get the user input
     let value = searchValue.val();
-    $.get(`http://www.omdbapi.com/?apikey=yourAPIkeyHere&s=${value}`, function(data) {
+    // Make a Get request
+    $.get(`http://www.omdbapi.com/?apikey=f1f0bada&s=${value}`, function(data) {
         const movies = data['Search'];
-        console.log(movies[0]);
+        //  Create element for each movie
         let output = '';
         $(movies).each(function(index) {
                 output +=
@@ -16,15 +25,20 @@ searchBtn.click(function(e) {
                             <div class = "movie rounded m-2">
                                 <img class = "img-thumbnail" src = ${movies[index]['Poster']}>
                                 <span>${movies[index]['Title']}</span> <br>
-                                <button class = "btn btn-info"> Details</button> 
+                                <button class = "btn btn-info" onclick="showDetails('${movies[index]['imdbID']}')"> Details</button> 
                             </div> 
                      </div>`;
-
             })
-            //  console.log(output);
-
+            // insert into html
         $('.row').html(output);
-
     });
-    e.preventDefault();
-})
+}
+
+
+
+function showDetails(movieId) {
+    const movie = $.get(`http://www.omdbapi.com/?apikey=f1f0bada&i=${movieId}`, function(data) {
+        console.log(movie.responseText);
+
+    })
+}
